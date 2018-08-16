@@ -16,6 +16,7 @@
               :transact!     d/transact!
               :listen!       d/listen!
               :conn?         d/conn?
+              :react         deref
               :ratom         #?(:clj  nil
                                 :cljs r/atom)
               :make-reaction #?(:clj  nil
