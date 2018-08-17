@@ -83,7 +83,7 @@
 
 #?(:clj
    (defmacro array-list [& args]
-     (if-cljs &env `(into [] ~@args)
+     (if-cljs &env `(clj->js (vec ~@args))
                    `(doto (ArrayList.) ~@(for [arg args] `(.add ~arg))))))
 
 #?(:clj
