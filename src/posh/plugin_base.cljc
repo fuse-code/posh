@@ -239,7 +239,8 @@
    (if ((:conn? dcfg) poshdb-or-conn)
      poshdb-or-conn
      (ps/poshdb->conn poshdb-or-conn))
-   txs))
+   txs
+   (meta txs)))
 
 #?(:clj
 (defmacro add-plugin [dcfg]
