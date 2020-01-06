@@ -240,7 +240,7 @@
 (defn process-tx! [{:keys [dcfg txs] :as posh-tree}]
   (let [conns-results (reduce-kv (fn [m conn tx]
                                    (assoc m conn
-                                          ((:transact! dcfg) conn tx)))
+                                          ((:transact! dcfg) conn tx (meta tx))))
                                  {}
                                  txs)]
     (after-transact (assoc posh-tree :txs {}) conns-results)))
