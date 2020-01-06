@@ -1,0 +1,29 @@
+{:aliases
+ {:test
+  {:extra-paths ["test"],
+   :extra-deps
+   {org.clojure/test.check {:mvn/version "RELEASE"},
+    datascript {:mvn/version "0.18.6"},
+    reagent {:mvn/version "0.9.0-rc2"},
+    org.clojure/clojure {:mvn/version "1.10.1"},
+    org.clojure/clojurescript {:mvn/version "1.10.520"}}},
+  :runner
+  {:extra-deps
+   {com.cognitect/test-runner
+    {:git/url "https://github.com/cognitect-labs/test-runner",
+     :sha "76568540e7f40268ad2b646110f237a60295fa3c"}},
+   :main-opts ["-m" "cognitect.test-runner" "-d" "test"]},
+  :kaocha
+  {:extra-deps
+   {lambdaisland/kaocha {:mvn/version "0.0-554"},
+    datascript {:mvn/version "0.18.6"},
+    com.datomic/datomic-free {:mvn/version "0.9.5407"},
+    reagent {:mvn/version "0.9.0-rc2"},
+    org.clojure/clojure {:mvn/version "1.10.1"},
+    org.clojure/clojurescript {:mvn/version "1.10.520"},
+    org.clojure/test.check {:mvn/version "0.9.0"}}}},
+ :deps
+ {org.clojure/clojure {:mvn/version "1.10.1"},
+  org.clojure/clojurescript {:mvn/version "1.10.520"},
+  org.clojure/core.match {:mvn/version "0.3.0"}}}
+
