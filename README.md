@@ -1,4 +1,8 @@
+[![Clojars Project](https://img.shields.io/clojars/v/denistakeda/posh.svg)](https://clojars.org/denistakeda/posh)
+
 # Posh
+
+## This is an official fork of [Posh](https://github.com/mpdairy/posh) library
 
 Posh is a ClojureScript / React library that lets you use a single
 [DataScript](https://github.com/tonsky/datascript/) database to store
@@ -39,8 +43,6 @@ database changed an attribute of the `person-id` entity:
 
 Posh chat room on Gitter: https://gitter.im/mpdairy/posh
 
-I am also currently looking for contract work or employment on a
-project that uses Posh.
 
 ### Examples:
 
@@ -59,9 +61,8 @@ buttons ([trashy live demo](http://otherway.org/posh-todo/)).
 
 Start a Reagent project and include these dependencies:
 
-```clj
-[posh "0.5.5"]
-```
+[![Clojars Project](https://clojars.org/denistakeda/posh/latest-version.svg)](https://clojars.org/denistakeda/posh)
+
 
 Require in Reagent app files:
 ```clj
@@ -99,7 +100,7 @@ even after the component using that query is un-rendered. (Thanks, [metasoarous]
   they sort-of worked in the older version. If you need to use those,
   just keep using the older version until those expressions are
   supported.
-  
+
 ## Overview
 
 Posh gives you two functions to retrieve data from the database from
@@ -307,7 +308,7 @@ one day explain further.
 ### Editable Label
 
 This component will show the text value
-for any entity and attrib combo. There is an "edit" button that, when clicked, 
+for any entity and attrib combo. There is an "edit" button that, when clicked,
 creates an `:edit` entity that keeps track of the
 temporary text typed in the edit box. The "done" button resets the original
 value of the entity and attrib and deletes the `:edit` entity. The
@@ -369,9 +370,25 @@ Datomic db over to DataScript.
 
 See our Gitter room for updates: https://gitter.im/mpdairy/posh
 
+## Developing this library
+
+Start a Clojure REPL via your normal way -- `M-x cider-jack-in` for Emacs users.
+
+Start a CLJS REPL via `lein trampoline cljsbuild repl-listen`
+
+Files of interest:
+
+* posh.clj.datomic.clj - Clojure Datomic API
+* posh.clj.datascript.clj - Clojure Datascript API
+* posh.reagent - CLJS Datascript API
+
+### Running tests
+
+Run `lein kaocha` from project root
+
 ## License
 
-Copyright © 2015 Matt Parker
+Copyright © 2019 Denis Krivosheev
 
 If somebody needs to BSD then sure, it's under that too.
 Distributed under the Eclipse Public License either version 1.0 or (at
