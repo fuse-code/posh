@@ -99,20 +99,19 @@
                  query-result         (:results (get (:cache posh-atom-with-query) storage-key))
                  query-ratom          (or (get (:ratoms posh-atom-with-query) storage-key)
                                           ((:ratom dcfg) query-result))
-                 query-reaction       ((:derive-reaction dcfg) [query-ratom] storage-key (fn [q] q))]
-                ;  query-reaction       ((:make-reaction dcfg)
-                ;                        (fn []
-                ;                          (println "RENDERING: " storage-key query-ratom)
-                ;                          ((:react dcfg) query-ratom))
-                ;                        :on-dispose
-                ;                         (fn [_ _]
-                ;                           ;;(println "no DISPOSING: " storage-key)
-                ;                           (when-not (= (:cache options) :forever)
-                ;                             (swap! posh-atom
-                ;                                    (fn [posh-atom-val]
-                ;                                      (assoc (p/remove-item posh-atom-val storage-key)
-                ;                                        :ratoms (dissoc (:ratoms posh-atom-val) storage-key)
-                ;                                        :reactions (dissoc (:reactions posh-atom-val) storage-key)))))))]
+                 query-reaction       ((:derive-reaction dcfg) [query-ratom] storage-key
+                                         (fn [q]
+                                           (println "RENDERING: " storage-key query-ratom)
+                                           q)
+                                        :on-dispose
+                                        (fn [_ _]
+                                          ;;(println "no DISPOSING: " storage-key)
+                                          (when-not (= (:cache options) :forever)
+                                            (swap! posh-atom
+                                                   (fn [posh-atom-val]
+                                                     (assoc (p/remove-item posh-atom-val storage-key)
+                                                       :ratoms (dissoc (:ratoms posh-atom-val) storage-key)
+                                                       :reactions (dissoc (:reactions posh-atom-val) storage-key)))))))]
              (assoc posh-atom-with-query
                :ratoms (assoc (:ratoms posh-atom-with-query) storage-key query-ratom)
                :reactions (assoc (:reactions posh-atom-with-query) storage-key query-reaction)))))
@@ -259,6 +258,7 @@
           (def ~'pull                (partial posh.plugin-base/pull                ~dcfg))
           (def ~'pull-info           (partial posh.plugin-base/pull-info           ~dcfg))
           (def ~'pull-tx             (partial posh.plugin-base/pull-tx             ~dcfg))
+          (def ~'pull-many           (partial posh.plugin-base/pull-many           ~dcfg))
           (def ~'parse-q-query       (partial posh.plugin-base/parse-q-query       ~dcfg))
           (def ~'q-args-count        (partial posh.plugin-base/q-args-count        ~dcfg))
           (def ~'q                   (partial posh.plugin-base/q                   ~dcfg))
