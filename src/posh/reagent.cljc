@@ -5,10 +5,9 @@
             [reagent.core :as r]
             [reagent.ratom :as ra]))
 
-#?(:clj
-   (def derive-reaction nil)
-   :cljs
-   (defn derive-reaction [reactions key f & local-mixin]
+(defn derive-reaction [reactions key f & local-mixin]
+  #?(:clj nil
+     :cljs
      (apply ra/make-reaction
        #(apply f (mapv deref reactions))
        local-mixin)))

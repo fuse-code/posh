@@ -1,11 +1,14 @@
 (ns posh.rum
-  (:require 
+  (:require
     [posh.plugin-base :as base :include-macros true]
     [rum.core :as rum]
     [datascript.core :as d]))
 
-(defn derive-reaction [reactions key f & local-mixin]
-  (rum/derived-atom reactions key f))
+(defn derive-reaction
+  ([reactions key f]
+   (derive-reaction reactions key f {}))
+  ([reactions key f opts]
+   (rum/derived-atom reactions key f opts)))
 
 (def dcfg
   (let [dcfg {:db              d/db
@@ -19,7 +22,7 @@
               :conn?           d/conn?
               :ratom           atom
               :react           rum/react
-              :derive-reaction derive-reaction}]
+              :make-reaction derive-reaction}]
     (assoc dcfg :pull (partial base/safe-pull dcfg))))
 
 (base/add-plugin dcfg)

@@ -101,7 +101,7 @@
                                           ((:ratom dcfg) query-result))
                  query-reaction       ((:derive-reaction dcfg) [query-ratom] storage-key
                                          (fn [q]
-                                           (println "RENDERING: " storage-key query-ratom)
+                                           ;; (println "RENDERING: " storage-key query-ratom)
                                            q)
                                         :on-dispose
                                         (fn [_ _]
